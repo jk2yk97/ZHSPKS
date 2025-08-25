@@ -6,18 +6,18 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <style>
     @font-face {
-    font-family: 'YRDZSTHeavy';
-    src: url('https://jk2yk97.github.io/ZHSPKS/YRDZST%20Heavy.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-   }
+      font-family: 'YRDZSTHeavy';
+      src: url('https://jk2yk97.github.io/ZHSPKS/YRDZST%20Heavy.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
 
-   @font-face {
-    font-family: 'MiniJianCaocuyuan';
-    src: url('https://jk2yk97.github.io/ZHSPKS/mini-jian-caocuyuan.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
+    @font-face {
+      font-family: 'MiniJianCaocuyuan';
+      src: url('https://jk2yk97.github.io/ZHSPKS/mini-jian-caocuyuan.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
 
     body {
       font-family: 'MiniJianCaocuyuan';
@@ -122,11 +122,11 @@
       width: 90%;
     }
 
-.modal-content h2 {
-  font-family: 'MiniJianCaocuyuan';
-  font-weight: 200;
-  color: #8245b5;
-}
+    .modal-content h2 {
+      font-family: 'MiniJianCaocuyuan';
+      font-weight: 200;
+      color: #8245b5;
+    }
 
     .modal-content label {
       display: block;
@@ -143,6 +143,18 @@
       font-weight: 200;
       color: #5a1e8a;
     }
+    
+    /* Estilos para el placeholder de los inputs */
+    .modal-content input::placeholder {
+      color: #c5a3e3;
+      opacity: 1;
+    }
+    
+    /* Estilo para el option por defecto en el select */
+    #modalEstado option[value=""][disabled] {
+      color: #c5a3e3;
+    }
+    
     .modal-buttons {
       margin-top: 15px;
       text-align: right;
@@ -233,11 +245,12 @@
       <label>成绩:</label>
       <input type="number" id="modalNota" min="0" max="100" step="0.01">
       <label>开始日期:</label>
-      <input type="text" id="modalInicio" class="datepicker">
+      <input type="text" id="modalInicio" class="datepicker" placeholder="选择日期">
       <label>结束日期:</label>
-      <input type="text" id="modalFin" class="datepicker">
+      <input type="text" id="modalFin" class="datepicker" placeholder="选择日期">
       <label>状态:</label>
       <select id="modalEstado">
+        <option value="" selected disabled>选择状态</option>
         <option>进行中</option>
         <option>通过</option>
         <option>未通过</option>
@@ -272,7 +285,7 @@
       document.getElementById('modalNota').value = data.nota || '';
       document.getElementById('modalInicio').value = data.inicio || '';
       document.getElementById('modalFin').value = data.fin || '';
-      document.getElementById('modalEstado').value = data.estado || 'En Curso';
+      document.getElementById('modalEstado').value = data.estado || '';
       document.getElementById('courseModal').style.display = 'flex';
     }
 
